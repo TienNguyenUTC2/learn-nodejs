@@ -7,7 +7,7 @@ export const validate = (validations: ContextRunner[]): express.RequestHandler =
       for (const validation of validations) {
         const result = await validation.run(req)
         if (!result.isEmpty()) {
-          res.status(400).json({ errors: result.array() })
+          res.status(400).json({ errors: result.mapped() })
           return
         }
       }
